@@ -1,0 +1,27 @@
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+wget https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-no-sudo.sh
+
+chmod +x npm-g-no-sudo.sh
+./npm-g-no-sudo.sh
+source ~/.bashrc
+
+echo '{}' > package.json
+
+
+
+npm install --global yo bower grunt-cli
+yo --version && bower --version && grunt --version
+
+npm install --global generator-angular
+
+npm install karma-chrome-launcher --save-dev
+npm install -g karma-cli
+./node_modules/karma/bin/karma start test/karma.conf.js --log-level debug -vvv
+
+cd app
+ln -s ../bower_components bower_components
+
+grunt serve
