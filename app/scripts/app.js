@@ -16,9 +16,16 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.sortable'
+    'ui.sortable',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(['localStorageServiceProvider', function(localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('ngTest');
+  }])
+  .config(function($locationProvider) {
+      $locationProvider.html5Mode(true);
+  })
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -31,6 +38,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-
-    $locationProvider.html5Mode(true);
   });
